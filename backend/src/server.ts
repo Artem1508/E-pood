@@ -3,6 +3,8 @@ import app from "./app";
 
 dotenv.config();
 
+declare const process: any;
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

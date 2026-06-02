@@ -11,3 +11,97 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Role {
+  role_id   Int    @id @default(autoincrement())
+  role_name String @unique
+
+  users User[]
+}
+
+model User {
+  user_id       Int      @id @default(autoincrement())
+  full_name     String
+  email         String   @unique
+  password_hash String
+  address       String?
+  created_at    DateTime @default(now())
+
+  role_id Int
+  role    Role @relation(fields: [role_id], references: [role_id])
+
+  orders Order[]
+}
+
+model Category {
+  category_id   Int    @id @default(autoincrement())
+  category_name String @unique
+
+  products Product[]
+}
+
+model Product {
+  product_id     Int      @id @default(autoincrement())
+  name           String
+  description    String?
+  price          Decimal
+  stock_quantity Int
+  created_at     DateTime @default(now())
+
+  category_id Int
+  category    Category @relation(fields: [category_id], references: [category_id])
+
+  order_items OrderItem[]
+}
+
+model Order {
+  order_id     Int      @id @default(autoincrement())
+  order_date   DateTime @default(now())
+  status       String
+  total_amount Decimal
+
+  user_id Int
+  user    User @relation(fields: [user_id], references: [user_id])
+
+  order_items OrderItem[]
+  payments    Payment[]
+}
+
+model OrderItem {
+  order_item_id Int @id @default(autoincrement())
+
+  quantity Int
+  price    Decimal
+
+  order_id Int
+  product_id Int
+
+  order   Order   @relation(fields: [order_id], references: [order_id])
+  product Product @relation(fields: [product_id], references: [product_id])
+}
+
+model Payment {
+  payment_id Int @id @default(autoincrement())
+
+  payment_date   DateTime @default(now())
+  amount         Decimal
+  payment_method String
+  payment_status String
+
+  order_id Int
+  order    Order @relation(fields: [order_id], references: [order_id])
+
+  
+}
+
+model ProductReview {
+  review_id Int @id
+    @default(autoincrement())
+
+  product_id Int
+
+  review_data Json
+
+  created_at DateTime
+    @default(now())
+}
