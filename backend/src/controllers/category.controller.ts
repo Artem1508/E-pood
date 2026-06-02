@@ -6,7 +6,7 @@ export const getCategories = async (
   res: Response
 ) => {
   const categories =
-    await prisma.category.findMany();
+    await prisma.categories_table.findMany();
 
   res.json(categories);
 }; 
@@ -17,7 +17,7 @@ export const createCategory = async (
   res: Response
 ) => {
   const category =
-    await prisma.category.create({
+    await prisma.categories_table.create({
       data: {
         category_name:
           req.body.category_name,

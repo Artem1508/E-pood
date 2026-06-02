@@ -6,7 +6,7 @@ export const createProduct = async (
   res: Response
 ) => {
   const product =
-    await prisma.product.create({
+    await prisma.products_table.create({
       data: {
         name: req.body.name,
         description:
@@ -31,11 +31,7 @@ export const getProducts = async (
   res: Response
 ) => {
   const products =
-    await prisma.product.findMany({
-      include: {
-        category: true,
-      },
-    });
+    await prisma.products_table.findMany();
 
   res.json(products);
 };

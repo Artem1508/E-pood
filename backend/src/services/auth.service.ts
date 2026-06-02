@@ -7,7 +7,7 @@ export const registerUser = async (
   password: string,
   address: string
 ) => {
-  const existingUser = await prisma.user.findUnique({
+  const existingUser = await prisma.users_table.findUnique({
     where: { email },
   });
 
@@ -17,7 +17,7 @@ export const registerUser = async (
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  return prisma.user.create({
+  return prisma.users_table.create({
     data: {
       full_name,
       email,
@@ -33,7 +33,7 @@ export const loginUser = async (
   email: string,
   password: string
 ) => {
-  const user = await prisma.user.findUnique({
+  const user = await prisma.users_table.findUnique({
     where: { email },
   });
 
