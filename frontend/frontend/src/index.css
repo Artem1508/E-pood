@@ -25,6 +25,172 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
+/* =========================
+   TOP BAR (fixed + hide/show)
+========================= */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  background: #000;
+  color: white;
+
+  z-index: 1000;
+
+  transition: transform 0.3s ease;
+}
+
+.topbar.show {
+  transform: translateY(0);
+}
+
+.topbar.hide {
+  transform: translateY(-100%);
+}
+
+.topbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 16px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.language-select {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.language-select option {
+  color: black;
+}
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-links a {
+  color: white;
+  text-decoration: none;
+}
+
+/* =========================
+   HEADER (под topbar)
+========================= */
+
+.header {
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+
+  /* важно: отступ под fixed topbar */
+  margin-top: 40px;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+/* LEFT */
+.header-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  text-decoration: none;
+  color: black;
+  letter-spacing: 1px;
+}
+
+/* CENTER */
+.header-center {
+  display: flex;
+  justify-content: center;
+}
+
+.header-center ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-center a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header-center a:hover {
+  color: black;
+}
+
+/* RIGHT */
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+/* SEARCH */
+.search {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  width: 120px;
+}
+
+/* CART */
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.count {
+  font-size: 12px;
+  background: black;
+  color: white;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
 
 h1, h2, h3, .logo-font {
   font-family: 'Playfair Display', serif;

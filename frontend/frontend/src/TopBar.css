@@ -1,0 +1,49 @@
+.topbar {
+    background-color: #000;
+    color: white;
+    padding: 8px 0;
+}
+
+.topbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    /* Все элементы справа */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.language-select {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-weight: 500;
+}
+
+.language-select option {
+    color: black;
+}
+
+.auth-links {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.auth-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+.auth-links span {
+    color: #999;
+}

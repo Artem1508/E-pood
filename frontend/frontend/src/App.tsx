@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import TopBar from './components/TopBar'
 import Header from './components/Header'
-import MainNav from './components/MainNav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import ProductDetails from './pages/ProductDetails'
@@ -19,7 +18,6 @@ function App() {
     <div className="app-wrapper">
       <TopBar />
       <Header cartCount={cartCount} />
-      <MainNav />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
