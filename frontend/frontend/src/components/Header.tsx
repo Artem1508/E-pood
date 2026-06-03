@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { megaMenuData } from "../data/menuData";
 import MegaMenu from "./MegaMenu";
 
@@ -11,6 +11,26 @@ const navItems = ["Men", "Women", "Kids", "Brands", "New & Trending"];
 
 const Header = ({ cartCount, favoritesCount }: HeaderProps) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement | null>(null);
+
+  // Закрытие при клике вне навигации
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setActiveMenu(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const toggleMenu = (item: string) => {
+    setActiveMenu(activeMenu === item ? null : item);
+  };
+
+  const handleLinkClick = () => {
+    setActiveMenu(null); // закрываем после клика по ссылке внутри меню
+  };
 
   return (
     <header className="header">
@@ -20,26 +40,29 @@ const Header = ({ cartCount, favoritesCount }: HeaderProps) => {
           <a href="/" className="logo">ABM</a>
         </div>
 
-        {/* CENTER — навигация с мега-меню */}
-        <nav className="header-center">
+        {/* CENTER навигация */}
+        <nav className="header-center" ref={navRef}>
           <ul>
             {navItems.map((item) => (
-              <li
-                key={item}
-                className="nav-item"
-                onMouseEnter={() => setActiveMenu(item)}
-                onMouseLeave={() => setActiveMenu(null)}
-              >
-                <a href="#">{item}</a>
+              <li key={item} className="nav-item">
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    toggleMenu(item);
+                  }}
+                >
+                  {item}
+                </a>
                 {activeMenu === item && megaMenuData[item] && (
-                  <MegaMenu sections={megaMenuData[item]} />
+                  <MegaMenu sections={megaMenuData[item]} onLinkClick={handleLinkClick} />
                 )}
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* RIGHT (поиск, корзина, избранное) */}
+        {/* RIGHT */}
         <div className="header-right">
           <div className="search">
             <input type="text" placeholder="Search..." />

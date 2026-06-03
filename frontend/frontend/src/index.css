@@ -257,7 +257,7 @@ input:focus {
   color: var(--clay) !important;
 }
 
-/* Mega Menu */
+/* Mega Menu — появляется по клику */
 .mega-menu {
   position: absolute;
   top: 100%;
@@ -267,15 +267,6 @@ input:focus {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   padding: 2rem 0;
   z-index: 50;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.2s ease;
-}
-
-/* Показываем при наведении на родителя */
-.nav-item:hover .mega-menu {
-  opacity: 1;
-  visibility: visible;
 }
 
 .mega-menu-container {
@@ -287,6 +278,7 @@ input:focus {
   gap: 2rem;
 }
 
+/* Остальные стили как ранее */
 .mega-menu-column h4 {
   font-weight: 700;
   font-size: 0.9rem;
@@ -311,7 +303,7 @@ input:focus {
 }
 
 .mega-menu-column a:hover {
-  color: #c17b5e; /* твой акцентный цвет */
+  color: #c17b5e;
 }
 
 /* ----- HERO СЕКЦИЯ (как на скрине) ----- */

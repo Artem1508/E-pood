@@ -1,10 +1,11 @@
-import type { MenuSection } from "../data/menuData";
+import { MenuSection } from "../data/menuData";
 
 type Props = {
   sections: MenuSection[];
+  onLinkClick?: () => void;
 };
 
-export default function MegaMenu({ sections }: Props) {
+export default function MegaMenu({ sections, onLinkClick }: Props) {
   return (
     <div className="mega-menu">
       <div className="mega-menu-container">
@@ -14,7 +15,9 @@ export default function MegaMenu({ sections }: Props) {
             <ul>
               {section.links.map((link, i) => (
                 <li key={i}>
-                  <a href="#">{link}</a>
+                  <a href="#" onClick={onLinkClick}>
+                    {link}
+                  </a>
                 </li>
               ))}
             </ul>
