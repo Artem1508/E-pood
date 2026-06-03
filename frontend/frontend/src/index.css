@@ -273,7 +273,7 @@ input:focus {
 
 .mega-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% - 36px);
   left: 0;
 
   width: 100vw;
