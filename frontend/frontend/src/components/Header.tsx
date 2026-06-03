@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { megaMenuData } from "../Data/menuData";
+import { megaMenuData } from "../data/menuData";
 import MegaMenu from "./MegaMenu";
 import { useTranslation } from "react-i18next";
 

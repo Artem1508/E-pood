@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import type { Product } from "../types/Product";
+import type { Product } from "../types/product.types";
 
 interface Props {
   product: Product;

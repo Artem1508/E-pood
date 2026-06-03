@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import type { MenuSection } from "../Data/menuData";
+import type { MenuSection } from "../data/menuData";
 
 type Props = {
   sections: MenuSection[];

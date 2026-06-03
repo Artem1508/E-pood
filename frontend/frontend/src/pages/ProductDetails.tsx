@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { getProductById } from "../services/product.service";
-import type { Product } from "../types/Product";
-import { useTranslation } from "react-i18next";
+import type { Product } from "../types/product.types";
+
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -12,7 +12,6 @@ export default function ProductDetails() {
 
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
-  const { t } = useTranslation();
 
   useEffect(() => {
     if (id) {
