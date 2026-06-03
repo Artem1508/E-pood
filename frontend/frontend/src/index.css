@@ -92,8 +92,7 @@ body {
 .header {
   background: white;
   border-bottom: 1px solid #e5e5e5;
-
-  /* важно: отступ под fixed topbar */
+  position: relative;
   margin-top: 40px;
 }
 
@@ -204,11 +203,6 @@ h1, h2, h3, .logo-font {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
 }
-a {
-  text-decoration: none;
-  font-family: 'Playfair Display', serif;
-  color: inherit;
-}
 
 .Row {
     display: table;
@@ -262,61 +256,115 @@ input:focus {
   color: var(--clay) !important;
 }
 
-/* Mega Menu */
+/* =========================
+   MEGA MENU WRAPPER
+========================= */
+
+
+.nav-item {
+  position: static;
+}
+.nav-item-wrapper {
+  position: static;
+}
+
 .mega-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
+
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+
   background: white;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-  padding: 2rem 0;
-  z-index: 50;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.2s ease;
+  z-index: 9999;
+
+  padding: 40px 0;
 }
 
-/* Показываем при наведении на родителя */
 .nav-item:hover .mega-menu {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
+
+
+/* =========================
+   CONTAINER (GRID LAYOUT)
+========================= */
 
 .mega-menu-container {
-  max-width: 1280px;
+  max-width: 1400px; /* 🔥 шире чем было */
   margin: 0 auto;
-  padding: 0 2rem;
+  padding-left: 5vw;
+  padding-right: 5vw;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  justify-content: center;
+  /* чуть шире колонки */
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+
+  gap: 3rem;
 }
 
-.mega-menu-column h4 {
-  font-weight: 700;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  color: #111;
+/* =========================
+   COLUMN BLOCK
+========================= */
+
+.mega-menu-column {
+  display: flex;
+  flex-direction: column;
 }
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.mega-menu-column h4 {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 12px;
+  color: #111;
+  letter-spacing: 0.3px;
+}
+
+/* =========================
+   LINKS LIST
+========================= */
 
 .mega-menu-column ul {
   list-style: none;
+  margin: 0;
   padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.mega-menu-column li {
-  margin-bottom: 0.5rem;
-}
+/* =========================
+   LINKS
+========================= */
 
 .mega-menu-column a {
   text-decoration: none;
+  font-size: 13px;
   color: #555;
-  font-size: 0.85rem;
-  transition: color 0.2s;
+
+  transition: color 0.2s ease;
 }
 
 .mega-menu-column a:hover {
-  color: #c17b5e; /* твой акцентный цвет */
+  color: #000;
+}
+
+/* =========================
+   OPTIONAL: HOVER EFFECT
+   (Nike-like feel)
+========================= */
+
+.mega-menu-column:hover h4 {
+  color: #000;
 }
 
 /* ----- HERO СЕКЦИЯ (как на скрине) ----- */
