@@ -12,12 +12,15 @@ import Checkout from './pages/Checkout'
 import Dashboard from './pages/Dashboard'
 
 function App() {
-  const [cartCount, setCartCount] = useState(3)
+  const [cartCount, setCartCount] = useState(0)
+  const [favoritesCount, setFavoritesCount] = useState(0)
 
   return (
     <div className="app-wrapper">
       <TopBar />
-      <Header cartCount={cartCount} />
+      <Header cartCount={cartCount}
+      favoritesCount={favoritesCount}
+      />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />

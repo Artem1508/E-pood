@@ -180,6 +180,14 @@ body {
   font-size: 18px;
 }
 
+.favorites {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
 .count {
   font-size: 12px;
   background: black;
@@ -247,6 +255,63 @@ input:focus {
 
 .text-red-600 {
   color: var(--clay) !important;
+}
+
+/* Mega Menu */
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 2rem 0;
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+/* Показываем при наведении на родителя */
+.nav-item:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mega-menu-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.mega-menu-column h4 {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.mega-menu-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mega-menu-column li {
+  margin-bottom: 0.5rem;
+}
+
+.mega-menu-column a {
+  text-decoration: none;
+  color: #555;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.mega-menu-column a:hover {
+  color: #c17b5e; /* твой акцентный цвет */
 }
 
 /* ----- HERO СЕКЦИЯ (как на скрине) ----- */
