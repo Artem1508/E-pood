@@ -429,11 +429,27 @@ input:focus {
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 50px;
+  padding-right: 50px;  /* Добавить правый паддинг */
+  width: 100%;          /* Явно указать ширину */
+  overflow-x: hidden;   /* Скрыть горизонтальную прокрутку */
+  box-sizing: border-box; /* Чтобы паддинги не увеличивали ширину */
 }
 
 .contCatalText{
   font-family: 'Playfair Display', serif;
   color:#675C5A;
+  margin-bottom: 20px;  /* Добавить отступ снизу */
+  padding-left: 50px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 300px));
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ----- КАРТОЧКИ ТОВАРОВ (нюдовые) ----- */
@@ -500,3 +516,22 @@ footer {
 .text-2xl { font-size: 1.5rem; }
 .font-bold { font-weight: 700; }
 .mb-6 { margin-bottom: 1.5rem; }
+
+
+.product-card-img-container {
+  width: 260px !important;
+  height: 220px !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+  display: block !important;  /* Добавить */
+  margin: 0 auto !important;  /* Добавить для центрирования */
+}
+
+.product-card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;   /* Добавить */
+}
+
+

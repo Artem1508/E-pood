@@ -32,7 +32,7 @@ model order_items_table {
   product_id    Int
   quantity      Int
   price         Decimal  @db.Decimal(10, 2)
-  subtotal      Decimal? @default(dbgenerated("((quantity)::numeric * price)")) @db.Decimal(10, 2)
+  subtotal      Decimal @db.Decimal(10,2)
 
   @@index([product_id], map: "idx_orderitems_table_product")
 }
@@ -84,6 +84,7 @@ model products_table {
   price          Decimal   @db.Decimal(10, 2)
   stock_quantity Int
   created_at     DateTime? @default(now()) @db.Timestamp(6)
+  image_URL      String?
 
   @@index([category_id], map: "idx_products_table_category")
 }

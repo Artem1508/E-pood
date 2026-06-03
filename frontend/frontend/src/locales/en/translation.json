@@ -20,10 +20,36 @@
     "contact": "Contact Us",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "register": {
-      "title": "Create Your Account"
-    },
-     "shoes": "Shoes",
+      "register": {
+        "title": "Create Account",
+        "subtitle": "Join us and start shopping",
+        "name": "Full Name",
+        "name_placeholder": "Enter your name",
+        "email": "Email Address",
+        "email_placeholder": "example@mail.com",
+        "password": "Password",
+        "password_placeholder": "••••••••",
+        "confirm_password": "Confirm Password",
+        "confirm_password_placeholder": "••••••••",
+        "submit": "Sign Up",
+        "loading": "Registering...",
+        "have_account": "Already have an account?",
+        "login_link": "Sign In",
+        "name_required": "Name is required",
+        "name_min_length": "Name must be at least 2 characters",
+        "email_required": "Email is required",
+        "email_invalid": "Please enter a valid email",
+        "password_required": "Password is required",
+        "password_min_length": "Password must be at least 6 characters",
+        "confirm_password_required": "Please confirm your password",
+        "passwords_not_match": "Passwords do not match",
+        "submit_error": "Registration failed. Please try again later.",
+        "address": "Delivery Address",
+        "address_placeholder": "Enter your address (optional)",
+        "email_exists": "User with this email already exists",
+        "success_message": "Registration successful! You can now log in."
+      },
+  "shoes": "Shoes",
   "sneakers": "Sneakers",
   "boots": "Boots",
   "sandals": "Sandals",
@@ -42,9 +68,22 @@
     "checkout": {
         "title": "Checkout"
     },
-    "login": {
-        "title": "Welcome Back"
-    }
+      "login": {
+          "title": "Sign In",
+          "subtitle": "Welcome back!",
+          "email": "Email Address",
+          "email_placeholder": "example@mail.com",
+          "password": "Password",
+          "password_placeholder": "••••••••",
+          "submit": "Sign In",
+          "loading": "Logging in...",
+          "forgot_password": "Forgot password?",
+          "no_account": "Don't have an account?",
+          "register_link": "Sign Up",
+          "fill_all_fields": "Please fill in all fields",
+          "invalid_credentials": "Invalid email or password",
+          "error": "Login failed. Please try again later."
+        }
 
 
 }

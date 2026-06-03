@@ -46,7 +46,7 @@ export default function ProductDetails() {
         {/* IMAGE */}
         <div className="md:w-1/2 bg-gray-100 rounded-2xl p-8 flex justify-center items-center">
           <img
-            src={product.image}
+            src={product.image_URL}
             alt={t("product_image_alt", { name: product.name })}
             className="max-w-full h-auto max-h-96 object-contain"
           />
