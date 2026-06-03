@@ -11,7 +11,6 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-200 hover:-translate-y-1 cursor-pointer">
-
       {/* IMAGE */}
       <div className="bg-gray-100 p-4 flex justify-center">
         <img

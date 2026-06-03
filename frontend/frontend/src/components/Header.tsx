@@ -25,7 +25,6 @@ export default function Header({ cartCount, favoritesCount }: HeaderProps) {
         setActiveMenu(null);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
