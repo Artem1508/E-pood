@@ -206,6 +206,9 @@ h1, h2, h3, a, .logo-font {
   text-decoration: none;
   color: var(--text-dark);
 }
+a{
+  font-size: 20px;
+}
 
 .Row {
     display: table;
@@ -270,6 +273,12 @@ input:focus {
 .nav-item-wrapper {
   position: static;
 }
+.header-center .nav-link {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+}
+
 
 .mega-menu {
   position: absolute;
@@ -325,7 +334,7 @@ input:focus {
 
 .mega-menu-column h4 {
   font-weight: 600;
-  font-size: 13px;
+  font-size: 18px;
   margin-bottom: 12px;
   color: #111;
   letter-spacing: 0.3px;
@@ -351,7 +360,7 @@ input:focus {
 
 .mega-menu-column a {
   text-decoration: none;
-  font-size: 13px;
+  font-size: 16px;
   color: #555;
 
   transition: color 0.2s ease;

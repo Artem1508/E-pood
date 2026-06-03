@@ -40,7 +40,9 @@ export default function Header({ cartCount, favoritesCount }: any) {
                 onMouseEnter={() => openMenu(item)}
                 onMouseLeave={closeMenu}
               >
-                <a href="#">{item}</a>
+                <a href="#" className="nav-link">
+                  {item}
+                </a>
 
                 {activeMenu === item && megaMenuData[item] && (
                   <div
