@@ -4,7 +4,7 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-white border-t border-nude-300 py-8 mt-12">
+    <footer className="footer">
       <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
         <div>
           <h4 className="font-bold mb-3">{t("help")}</h4>

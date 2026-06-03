@@ -143,7 +143,7 @@ body {
 }
 
 .header-center a:hover {
-  color: wheat;
+  color: #CDBCA8;
 }
 
 /* RIGHT */
@@ -424,6 +424,18 @@ input:focus {
   border-color: white;
 }
 
+.containerCatal{
+  background: #CDBCA8;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+}
+
+.contCatalText{
+  font-family: 'Playfair Display', serif;
+  color:#675C5A;
+}
+
 /* ----- КАРТОЧКИ ТОВАРОВ (нюдовые) ----- */
 .bg-white {
   background-color: var(--white);
@@ -446,7 +458,7 @@ input:focus {
 
 /* ----- FOOTER ----- */
 footer {
-  background-color: #6B7A89;
+  background-color: #675C5A;
   border-top: #6B7A89;
   margin-top: 3rem;
   padding: 2rem 1rem;
