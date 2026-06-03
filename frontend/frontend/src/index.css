@@ -1,9 +1,9 @@
 /* ----- НЮДОВАЯ ПАЛИТРА ----- */
 :root {
-  --nude-100: #FDF8F5;   /* основной фон */
-  --nude-200: #F9EFEA;   /* карточки, ховеры */
-  --nude-300: #EEDED4;   /* границы, разделители */
-  --nude-400: #D4BBA8;   /* акцент светлый */
+  --nude-100: #6B7A89;   /* основной фон */
+  --nude-200: #6B7A89;   /* карточки, ховеры */
+  --nude-300: #6B7A89;   /* границы, разделители */
+  --nude-400: #6B7A89;   /* акцент светлый */
   --clay: #C17B5E;       /* основной акцент (терракотовый) */
   --clay-dark: #A35C3A;  /* тёмный акцент */
   --text-dark: #2C2A29;  /* основной текст */
@@ -90,8 +90,8 @@ body {
 ========================= */
 
 .header {
-  background: white;
-  border-bottom: 1px solid #e5e5e5;
+  background: #111111;
+  border-bottom: 1px solid #6B7A89;
   position: relative;
   margin-top: 40px;
 }
@@ -117,7 +117,7 @@ body {
   font-weight: 800;
   font-family: 'Playfair Display', serif;
   text-decoration: none;
-  color: black;
+  color: white;
   letter-spacing: 1px;
 }
 
@@ -137,13 +137,13 @@ body {
 
 .header-center a {
   text-decoration: none;
-  color: #333;
+  color: white;
   font-size: 14px;
   font-weight: 500;
 }
 
 .header-center a:hover {
-  color: black;
+  color: wheat;
 }
 
 /* RIGHT */
@@ -178,6 +178,7 @@ body {
   gap: 6px;
   cursor: pointer;
   font-size: 18px;
+  color: white;
 }
 
 .favorites {
@@ -186,12 +187,13 @@ body {
   gap: 6px;
   cursor: pointer;
   font-size: 18px;
+  color: white;
 }
 
 .count {
   font-size: 12px;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   width: 18px;
   height: 18px;
   display: inline-flex;
@@ -238,7 +240,6 @@ header .border-b {
 input:focus {
   outline: none;
   border-color: var(--clay);
-  box-shadow: 0 0 0 3px rgba(193, 123, 94, 0.2);
 }
 
 .rounded-full {
@@ -289,7 +290,7 @@ input:focus {
   left: 50%;
   transform: translateX(-50%);
 
-  background: white;
+  background: #111111;
   z-index: 9999;
 
   padding: 40px 0;
@@ -336,7 +337,7 @@ input:focus {
   font-weight: 600;
   font-size: 18px;
   margin-bottom: 12px;
-  color: #111;
+  color: white;
   letter-spacing: 0.3px;
 }
 
@@ -348,7 +349,7 @@ input:focus {
   list-style: none;
   margin: 0;
   padding: 0;
-
+  color:white;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -361,13 +362,12 @@ input:focus {
 .mega-menu-column a {
   text-decoration: none;
   font-size: 16px;
-  color: #555;
-
+  color: #606060;
   transition: color 0.2s ease;
 }
 
 .mega-menu-column a:hover {
-  color: #000;
+  color: white;
 }
 
 /* =========================
@@ -376,12 +376,12 @@ input:focus {
 ========================= */
 
 .mega-menu-column:hover h4 {
-  color: #000;
+  color: white;
 }
 
 /* ----- HERO СЕКЦИЯ (как на скрине) ----- */
 .hero-section {
-  background: linear-gradient(145deg, var(--nude-200) 0%, var(--nude-100) 100%);
+  background: #6B7A89;
   padding: 4rem 1.5rem;
   text-align: center;
   border-bottom: 1px solid var(--nude-300);
@@ -392,7 +392,7 @@ input:focus {
   font-size: 0.75rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--clay);
+  color: #CDBCA8;
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -402,26 +402,26 @@ input:focus {
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--text-dark);
+  color: white;
   margin-bottom: 2rem;
   white-space: pre-line;
 }
 
 .hero-btn {
   background: transparent;
-  border: 2px solid var(--clay);
+  border: 2px solid #CDBCA8;
   padding: 0.8rem 2rem;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.25s;
-  color: var(--clay-dark);
+  color: #CDBCA8;
   border-radius: 40px;
 }
 .hero-btn:hover {
-  background: var(--clay);
+  background: transparent;
   color: white;
-  border-color: var(--clay);
+  border-color: white;
 }
 
 /* ----- КАРТОЧКИ ТОВАРОВ (нюдовые) ----- */
@@ -446,12 +446,12 @@ input:focus {
 
 /* ----- FOOTER ----- */
 footer {
-  background-color: var(--white);
-  border-top: 1px solid var(--nude-300);
+  background-color: #6B7A89;
+  border-top: #6B7A89;
   margin-top: 3rem;
   padding: 2rem 1rem;
   text-align: center;
-  color: var(--text-soft);
+  color: #6B7A89;
 }
 
 /* ----- АДАПТИВ (мобильное меню пока упрощённо) ----- */

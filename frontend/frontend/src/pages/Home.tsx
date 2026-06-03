@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       {/* HERO SECTION */}
       <section className="hero-section">
-        <div className="hero-badge">FUTURECRAFT.LOOP</div>
+        <div className="hero-badge">NEW & TRENDING</div>
 
         <h1 className="hero-title">
           READY <br /> SET <br /> MOVE
