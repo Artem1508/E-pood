@@ -1,0 +1,47 @@
+{
+  "home": "Avaleht",
+  "about": "Meist",
+  "signin": "Logi sisse",
+  "signup": "Loo konto",
+  "discover": "Avasta",
+    "recommended": "Soovitatav Sulle",
+    "add_to_cart": "Lisa ostukorvi",
+    "logo": "ABM",
+    "men": "Mehed",
+    "women": "Naised",
+    "kids": "Lapsed",
+    "brands": "Brändid",
+    "new": "Uued ja trendikad",
+    "search": "Otsi...",
+    "help": "Abi",
+    "shipping": "Saatmine",
+    "returns": "Tagastused",
+    "size_guide": "Suuruste juhend",
+    "contact": "Võta meiega ühendust",
+    "privacy": "Privaatsuspoliitika",
+    "terms": "Kasutustingimused",
+    "register": {
+        "title": "Loo oma konto"
+        },
+        "shoes": "Jalatsid",
+    "sneakers": "Tennised",
+    "boots": "Saapad",
+    "sandals": "Sandaalid",
+    "dashboard": "Töölauale",
+    "hello": "Tere",
+    "view_details": "Vaata detaile",
+    "product_image_alt": "{{name}} pilt",
+    "loading_products": "Laadimine...",
+    "no_products": "Tooteid pole saadaval",
+    "loading_product": "Laadimine...",
+    "product_not_found": "Toodet ei leitud",
+    "cart": {
+        "title": "Sinu ostukorv"
+    },
+    "checkout": {
+        "title": "Kassasse"
+    },
+    "login": {
+        "title": "Tere tulemast tagasi"
+    }
+}

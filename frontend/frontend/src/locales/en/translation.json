@@ -1,0 +1,50 @@
+{
+  "home": "Home",
+  "about": "About Us",
+  "signin": "Sign In",
+  "signup": "Sign Up",
+  "discover": "Discover",
+  "recommended": "Recommended for You",
+  "add_to_cart": "Add to Cart",
+  "logo": "ABM",
+  "men": "Men",
+  "women": "Women",
+  "kids": "Kids",
+  "brands": "Brands",
+  "new": "New & Trending",
+  "search": "Search...",
+    "help": "Help",
+    "shipping": "Shipping",
+    "returns": "Returns",
+    "size_guide": "Size Guide",
+    "contact": "Contact Us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "register": {
+      "title": "Create Your Account"
+    },
+     "shoes": "Shoes",
+  "sneakers": "Sneakers",
+  "boots": "Boots",
+  "sandals": "Sandals",
+  "dashboard": "Dashboard",
+  "hello": "Hello",
+  "view_details": "View Details",
+  "product_image_alt": "Image of {{name}}",
+  "loading_products": "Loading products...",
+  "no_products": "No products available",
+  "loading_product": "Loading product...",
+  "product_not_found": "Product not found",
+  
+    "cart": {
+        "title": "Your Shopping Cart"
+    },  
+    "checkout": {
+        "title": "Checkout"
+    },
+    "login": {
+        "title": "Welcome Back"
+    }
+
+
+}

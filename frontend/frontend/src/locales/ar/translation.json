@@ -1,0 +1,48 @@
+{
+  "home": "الرئيسية",
+  "about": "من نحن",
+  "signin": "تسجيل الدخول",
+  "signup": "إنشاء حساب",
+  "discover": "اكتشف",
+    "recommended": "موصى به لك",
+    "add_to_cart": "أضف إلى السلة",
+    "logo": "ABM",
+    "men": "رجال",
+    "women":    "نساء",
+    "kids": "أطفال",
+    "brands": "العلامات التجارية",
+    "new": "جديد ورائج",
+    "search": "بحث...",
+    "help": "المساعدة",
+    "shipping": "الشحن",
+    "returns": "الإرجاع",
+    "size_guide": "دليل المقاسات",
+    "contact": "اتصل بنا",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة",
+    "register": {
+      "title": "أنشئ حسابك"
+    },
+        "shoes": "أحذية",   
+    "sneakers": "أحذية رياضية",
+    "boots": "أحذية طويلة",
+    "sandals": "صنادل",
+    "dashboard": "لوحة التحكم",
+    "hello": "مرحبا",
+    "view_details": "عرض التفاصيل",
+    "product_image_alt": "صورة {{name}}",
+    "loading_products": "جار تحميل المنتجات...",
+    "no_products": "لا توجد منتجات متاحة",
+    "loading_product": "جار تحميل المنتج...",
+    "product_not_found": "المنتج غير موجود",
+    "cart": {
+        "title": "سلة التسوق الخاصة بك"
+    },
+    "checkout": {
+        "title": "الدفع"
+    },
+    "login": {
+        "title": "مرحبًا بعودتك"
+    }
+
+}

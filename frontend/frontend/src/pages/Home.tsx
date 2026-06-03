@@ -1,18 +1,30 @@
-import Products from '../components/Products';
+import Products from "../components/Products";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
+
   return (
     <div>
-      {/* HERO секция */}
+      {/* HERO SECTION */}
       <section className="hero-section">
-        <div className="hero-badge">NEW & TRENDING</div>
-        <h1 className="hero-title">READY<br />SET<br />MOVE</h1>
-        <button className="hero-btn">DISCOVER →</button>
+        <div className="hero-badge">FUTURECRAFT.LOOP</div>
+
+        <h1 className="hero-title">
+          READY <br /> SET <br /> MOVE
+        </h1>
+
+        <button className="hero-btn">
+          {t("discover")} →
+        </button>
       </section>
 
-      {/* Каталог товаров */}
+      {/* PRODUCT CATALOG */}
       <div className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold mb-6">Recommended for You</h2>
+        <h2 className="text-2xl font-bold mb-6">
+          {t("recommended")}
+        </h2>
+
         <Products />
       </div>
     </div>

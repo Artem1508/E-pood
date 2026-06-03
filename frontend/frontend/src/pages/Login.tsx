@@ -1,56 +1,42 @@
 import { useState } from "react";
-
-import {
-  login,
-} from "../services/auth.service";
+import { useTranslation } from "react-i18next";
+import { login } from "../services/auth.service";
 
 const Login = () => {
-  const [email, setEmail] =
-    useState("");
+  const { t } = useTranslation();
 
-  const [password, setPassword] =
-    useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const submit = async (
-    e: React.FormEvent
-  ) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const data =
-      await login(
-        email,
-        password
-      );
+    try {
+      const data = await login(email, password);
 
-    localStorage.setItem(
-      "token",
-      data.token
-    );
+      localStorage.setItem("token", data.token);
+    } catch (err) {
+      console.error("Login failed:", err);
+    }
   };
 
   return (
     <form onSubmit={submit}>
+      <h1>{t("login.title")}</h1>
+
       <input
-        placeholder="Email"
-        onChange={(e) =>
-          setEmail(
-            e.target.value
-          )
-        }
+        placeholder={t("login.email")}
+        onChange={(e) => setEmail(e.target.value)}
       />
 
       <input
         type="password"
-        placeholder="Password"
-        onChange={(e) =>
-          setPassword(
-            e.target.value
-          )
-        }
+        placeholder={t("login.password")}
+        onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button>
-        Login
+      <button type="submit">
+        {t("login.submit")}
       </button>
     </form>
   );

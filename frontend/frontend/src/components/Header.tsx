@@ -1,13 +1,36 @@
-import { useState, useRef } from "react";
-import { megaMenuData } from "../data/menuData";
+import { useState, useRef, useEffect } from "react";
+import { megaMenuData } from "../Data/menuData";
 import MegaMenu from "./MegaMenu";
+import { useTranslation } from "react-i18next";
 
-const navItems = ["Men", "Women", "Kids", "Brands", "New & Trending"];
+interface HeaderProps {
+  cartCount: number;
+  favoritesCount: number;
+}
 
-export default function Header({ cartCount, favoritesCount }: any) {
+// translation keys
+const navItems = ["men", "women", "kids", "brands", "new"];
+
+export default function Header({ cartCount, favoritesCount }: HeaderProps) {
+  const { t } = useTranslation();
+
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const timeoutRef = useRef<number | null>(null);
+  const navRef = useRef<HTMLElement | null>(null);
 
+  // close on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setActiveMenu(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // hover open with delay (smooth UX)
   const openMenu = (item: string) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -18,7 +41,16 @@ export default function Header({ cartCount, favoritesCount }: any) {
   const closeMenu = () => {
     timeoutRef.current = window.setTimeout(() => {
       setActiveMenu(null);
-    }, 150); // 🔥 задержка решает ВСЁ
+    }, 150);
+  };
+
+  // click toggle (useful for mobile)
+  const toggleMenu = (item: string) => {
+    setActiveMenu(activeMenu === item ? null : item);
+  };
+
+  const handleLinkClick = () => {
+    setActiveMenu(null);
   };
 
   return (
@@ -27,11 +59,11 @@ export default function Header({ cartCount, favoritesCount }: any) {
 
         {/* LEFT */}
         <div className="header-left">
-          <a href="/" className="logo">ABM</a>
+          <a href="/" className="logo">{t("logo")}</a>
         </div>
 
         {/* CENTER */}
-        <nav className="header-center">
+        <nav className="header-center" ref={navRef}>
           <ul>
             {navItems.map((item) => (
               <li
@@ -40,18 +72,22 @@ export default function Header({ cartCount, favoritesCount }: any) {
                 onMouseEnter={() => openMenu(item)}
                 onMouseLeave={closeMenu}
               >
-                <a href="#" className="nav-link">
-                  {item}
+                <a
+                  href="#"
+                  className="nav-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    toggleMenu(item);
+                  }}
+                >
+                  {t(item)}
                 </a>
 
                 {activeMenu === item && megaMenuData[item] && (
-                  <div
-                    className="mega-menu"
-                    onMouseEnter={() => openMenu(item)}
-                    onMouseLeave={closeMenu}
-                  >
-                    <MegaMenu sections={megaMenuData[item]} />
-                  </div>
+                  <MegaMenu
+                    sections={megaMenuData[item]}
+                    onLinkClick={handleLinkClick}
+                  />
                 )}
               </li>
             ))}
@@ -61,7 +97,7 @@ export default function Header({ cartCount, favoritesCount }: any) {
         {/* RIGHT */}
         <div className="header-right">
           <div className="search">
-            <input type="text" placeholder="Search..." />
+            <input type="text" placeholder={t("search")} />
             <span>⚲</span>
           </div>
 
