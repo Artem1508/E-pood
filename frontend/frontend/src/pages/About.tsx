@@ -1,18 +1,15 @@
-import{useTranslation} from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const About = () => {
   const { t } = useTranslation();
 
   return (
     <div>
-      <h1>{t('about.title')}</h1>
+      <h1>{t("about_title")}</h1>
 
-      <p>({t('about.description')})</p>
-        <p>
-        ABM is a modern fashion e-commerce
-        platform providing high-quality
-        clothing and accessories.
-      </p>
+      <p>{t("about_description")}</p>
+
+      <p>{t("about_text")}</p>
     </div>
   );
 };
