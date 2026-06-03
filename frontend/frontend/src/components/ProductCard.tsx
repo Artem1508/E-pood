@@ -10,7 +10,7 @@ export default function ProductCard({ product }: Props) {
   const { t } = useTranslation();
 
 return (
-  <div className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-1 cursor-pointer border border-gray-200">
+  <div className="bg-white rounded-[32px] overflow-hidden shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-1 cursor-pointer border border-gray-200">
     
     {/* IMAGE */}
     <div className="bg-white p-6 flex justify-center">
