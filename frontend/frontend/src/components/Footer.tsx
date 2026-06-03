@@ -5,9 +5,9 @@ export default function Footer() {
         <div>
           <h4 className="font-bold mb-3">HELP</h4>
           <ul className="Row">
-            <div class="Column"><a href="#">Shipping</a></div>
-            <div class="Column"><a href="#">Returns</a></div>
-            <div class="Column"><a href="#">Size Guide</a></div>
+            <div className="Column"><a href="#">Shipping</a></div>
+            <div className="Column"><a href="#">Returns</a></div>
+            <div className="Column"><a href="#">Size Guide</a></div>
           </ul>
         </div>
       </div>
