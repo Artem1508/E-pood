@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { megaMenuData } from "data/menuData";
+import { megaMenuData } from "../data/menuData";
 import MegaMenu from "./MegaMenu";
 
 interface HeaderProps {
