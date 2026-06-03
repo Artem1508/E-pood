@@ -1,5 +1,5 @@
 // src/data/menuData.ts
-
+//import { useTranslation } from "react-i18next";
 export type MenuSection = {
   title: string;      // translation key
   links: string[];    // translation keys
@@ -14,12 +14,12 @@ export const megaMenuData: MegaMenuContent = {
     {
       title: "new_featured",
       links: [
-        "new_arrivals",
-        "best_sellers",
-        "latest_drops",
-        "fathers_day_shop",
-        "launch_calendar",
-        "shop_all_sale"
+          "new_arrivals",
+          "best_sellers",
+          "latest_drops",
+          "fathers_day_shop",
+          "launch_calendar",
+          "shop_all_sale"
       ]
     },
     {
