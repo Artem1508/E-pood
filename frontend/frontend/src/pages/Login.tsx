@@ -1,3 +1,7 @@
+
+import { useTranslation } from 'react-i18next';
+
 export default function Login() {
-  return <h1>Login</h1>;
+  const { t } = useTranslation();
+  return <h1>{t('login.title')}</h1>;
 }

@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Checkout from './pages/Checkout'
 import Dashboard from './pages/Dashboard'
+import About from './pages/About'
 
 function App() {
   const [cartCount, setCartCount] = useState(0)
@@ -19,7 +20,7 @@ function App() {
     <div className="app-wrapper">
       <TopBar />
       <Header cartCount={cartCount}
-      favoritesCount={favoritesCount}
+        favoritesCount={favoritesCount}
       />
       <main className="main-content">
         <Routes>
@@ -30,6 +31,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/about"
+            element={<About />}
+          />
         </Routes>
       </main>
       <Footer />

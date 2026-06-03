@@ -1,3 +1,9 @@
+
+
+
+import { useTranslation } from 'react-i18next';
+
 export default function Register() {
-  return <h1>Register</h1>;
+  const { t } = useTranslation();
+  return <h1>{t('register.title')}</h1>;
 }

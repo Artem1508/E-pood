@@ -1,11 +1,24 @@
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+
 const TopBar = () => {
+  const { t, i18n } = useTranslation();
+
+  const handleLanguageChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    i18n.changeLanguage(e.target.value);
+  };
+
   return (
     <div className="topbar">
       <div className="topbar-container">
 
+        {/* LANGUAGE SELECTOR */}
         <select
           className="language-select"
-          defaultValue="en"
+          value={i18n.language}
+          onChange={handleLanguageChange}
         >
           <option value="en">EN</option>
           <option value="ru">RU</option>
@@ -13,12 +26,13 @@ const TopBar = () => {
           <option value="ar">AR</option>
         </select>
 
+        {/* AUTH LINKS */}
         <div className="auth-links">
-          <a href="#">Sign In</a>
+          <Link to="/login">{t("signin")}</Link>
           <span>|</span>
-          <a href="#">Sign Up</a>
+          <Link to="/register">{t("signup")}</Link>
           <span>|</span>
-          <a href="#">About us</a>
+          <Link to="/about">{t("about")}</Link>
         </div>
 
       </div>
