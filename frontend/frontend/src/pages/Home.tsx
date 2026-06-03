@@ -5,8 +5,8 @@ export default function Home() {
     <div>
       {/* HERO секция */}
       <section className="hero-section">
-        <div className="hero-badge">FUTURECRAFT.LOOP</div>
-        <h1 className="hero-title">BE<br />REN<br />MADE</h1>
+        <div className="hero-badge">NEW & TRENDING</div>
+        <h1 className="hero-title">READY<br />SET<br />MOVE</h1>
         <button className="hero-btn">DISCOVER →</button>
       </section>
 
