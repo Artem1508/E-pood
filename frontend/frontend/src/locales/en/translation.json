@@ -13,17 +13,17 @@
   "brands": "Brands",
   "new": "New & Trending",
   "search": "Search...",
-    "help": "Help",
-    "shipping": "Shipping",
-    "returns": "Returns",
-    "size_guide": "Size Guide",
-    "contact": "Contact Us",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "register": {
-      "title": "Create Your Account"
-    },
-     "shoes": "Shoes",
+  "help": "Help",
+  "shipping": "Shipping",
+  "returns": "Returns",
+  "size_guide": "Size Guide",
+  "contact": "Contact Us",
+  "privacy": "Privacy Policy",
+  "terms": "Terms of Service",
+  "register": {
+    "title": "Create Your Account"
+  },
+  "shoes": "Shoes",
   "sneakers": "Sneakers",
   "boots": "Boots",
   "sandals": "Sandals",
@@ -35,16 +35,45 @@
   "no_products": "No products available",
   "loading_product": "Loading product...",
   "product_not_found": "Product not found",
-  
-    "cart": {
-        "title": "Your Shopping Cart"
-    },  
-    "checkout": {
-        "title": "Checkout"
-    },
-    "login": {
-        "title": "Welcome Back"
-    }
-
-
+  "cart": {
+    "title": "Your Shopping Cart"
+  },
+  "checkout": {
+    "title": "Checkout"
+  },
+  "login": {
+    "title": "Welcome Back"
+  },
+  "new_featured": "New & Featured",
+  "new_arrivals": "New Arrivals",
+  "best_sellers": "Best Sellers",
+  "latest_drops": "Latest Drops",
+  "fathers_day_shop": "Father's Day Shop",
+  "launch_calendar": "Launch Calendar",
+  "shop_all_sale": "Shop All Sale",
+  "all_categories": "All Categories",
+  "all_shoes": "All Shoes",
+  "basketball": "Basketball",
+  "fathers_day_shoes": "Father's Day Shoes",
+  "jordan": "Jordan",
+  "lifestyle": "Lifestyle",
+  "running": "Running",
+  "sandals_slides": "Sandals & Slides",
+  "soccer": "Soccer",
+  "training_gym": "Training & Gym",
+  "custom_shoes": "Custom Shoes",
+  "clothing": "Clothing",
+  "all_clothing": "All Clothing",
+  "fathers_day_clothing": "Father's Day Clothing",
+  "hoodies_sweatshirts": "Hoodies & Sweatshirts",
+  "jackets_vests": "Jackets & Vests",
+  "pants": "Pants",
+  "shorts": "Shorts",
+  "swim": "Swim",
+  "tops_graphic_tees": "Tops & Graphic Tees",
+   "accessories": "Accessories",
+  "all_accessories": "All Accessories",
+  "bags_backpacks": "Bags & Backpacks",
+  "hats_headwear": "Hats & Headwear",
+  "socks": "Socks"
 }
