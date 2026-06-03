@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import TopBar from './components/TopBar'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import { useState, useEffect } from 'react'
+import { useLocation, Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import AdminLayout from "./layouts/AdminLayout";
+import EmployeeLayout from "./layouts/EmployeeLayout";
 import Home from './pages/Home'
 import ProductDetails from './pages/ProductDetails'
 import Cart from './pages/Cart'
@@ -12,36 +12,76 @@ import Checkout from './pages/Checkout'
 import Products from "./pages/Products";
 import Dashboard from './pages/Dashboard'
 import About from './pages/About'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   const [cartCount, setCartCount] = useState(0)
   const [favoritesCount, setFavoritesCount] = useState(0)
+  const location = useLocation();
+  const [, setUpdateTrigger] = useState(0);
+
+    useEffect(() => {
+      setUpdateTrigger(prev => prev + 1);
+    }, [location]);
 
   return (
-    <div className="app-wrapper">
-      <TopBar />
-      <Header cartCount={cartCount}
-        favoritesCount={favoritesCount}
-      />
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/checkout" element={<Checkout />} />
+    <Routes>
+      {/* Публичные маршруты с обычным Layout */}
+      <Route path="/" element={
+        <Layout cartCount={cartCount} favoritesCount={favoritesCount}>
+          <Home />
+        </Layout>
+      } />
+      
+      <Route path="/products" element={
+        <Layout cartCount={cartCount} favoritesCount={favoritesCount}>
+          <Products />
+        </Layout>
+      } />
+      
+      <Route path="/product/:id" element={
+        <Layout cartCount={cartCount} favoritesCount={favoritesCount}>
+          <ProductDetails />
+        </Layout>
+      } />
+      
+      <Route path="/about" element={
+        <Layout cartCount={cartCount} favoritesCount={favoritesCount}>
+          <About />
+        </Layout>
+      } />
+      
+      <Route path="/cart" element={
+        <Layout cartCount={cartCount} favoritesCount={favoritesCount}>
+          <Cart />
+        </Layout>
+      } />
+      
+      <Route path="/checkout" element={
+        <Layout cartCount={cartCount} favoritesCount={favoritesCount}>
+          <Checkout />
+        </Layout>
+      } />
+
+      {/* Auth маршруты без Layout */}
+      <Route path="/login" element={ <Layout cartCount={cartCount} favoritesCount={favoritesCount}> <Login /></Layout>} />
+      <Route path="/register" element={<Layout cartCount={cartCount} favoritesCount={favoritesCount}> <Register /></Layout>} />
+
+      {/* Admin маршруты */}
+      <Route element={<ProtectedRoute requiredRole={1} />}>
+        <Route element={<AdminLayout />}>a
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route
-            path="/about"
-            element={<About />}
-          />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+        </Route>
+      </Route>
+
+      {/* Employee маршруты */}
+      <Route element={<ProtectedRoute requiredRole={2} />}>
+        <Route element={<EmployeeLayout />}>
+          <Route path="/employee/*" element={<div>Employee Panel</div>} />
+        </Route>
+      </Route>
+    </Routes>
   )
 }
 
-export default App;
+export default App

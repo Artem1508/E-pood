@@ -1,14 +1,22 @@
-import { Navigate } from "react-router-dom";
-import {isAuthenticated} from "../services/auth.service";
+import { Navigate, Outlet } from "react-router-dom";
+import { isAuthenticated, getCurrentUser } from "../services/auth.service";
 
 interface Props {
-  children: React.ReactNode;
+  requiredRole?: number;  // ← Добавьте эту строку
+  children?: React.ReactNode;
 }
 
-export default function ProtectedRoute({ children }: Props) {
+export default function ProtectedRoute({ requiredRole, children }: Props) {
   if (!isAuthenticated()) {
     return <Navigate to="/login" replace />;
   }
-  
-  return <>{children}</>;
-}   
+
+  if (requiredRole) {
+    const user = getCurrentUser();
+    if (user?.role_id !== requiredRole) {
+      return <Navigate to="/" replace />;
+    }
+  }
+
+  return children ? <>{children}</> : <Outlet />;
+}

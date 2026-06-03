@@ -32,6 +32,7 @@ const Login = () => {
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
       }
+      window.location.href = "/";
       
       // Перенаправляем на главную страницу
       navigate("/");

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
-import { register } from '../services/auth.service';
+import { useNavigate } from 'react-router-dom';
+import { register, login } from '../services/auth.service';
 
 export default function Register() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     full_name: '',
     email: '',
@@ -14,16 +15,8 @@ export default function Register() {
     address: ''
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    // Очищаем ошибку при вводе
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
-  };
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -56,41 +49,59 @@ export default function Register() {
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const handleBlur = (field: string) => {
+    setTouched(prev => ({ ...prev, [field]: true }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const allTouched = {
+      full_name: true,
+      email: true,
+      password: true,
+      confirmPassword: true
+    };
+    setTouched(allTouched);
     
     if (!validate()) return;
     
     setIsLoading(true);
     
     try {
-      // Используем ваш auth.service register
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
       const response = await register(
         formData.full_name,
         formData.email,
         formData.password,
         formData.address
       );
-      
-      console.log('Registration successful:', response);
-      
-      // Сохраняем токен если он возвращается с сервера
-      if (response.token) {
-        localStorage.setItem('token', response.token);
+      const loginData = await login(formData.email, formData.password);
+      // Сохраняем токен и данные пользователя
+      localStorage.setItem("token", loginData.token);
+      if (loginData.user) {
+        localStorage.setItem("user", JSON.stringify(loginData.user));
       }
       
-      // Перенаправляем на страницу входа или на главную
-      navigate('/login', { 
-        state: { message: t('register.success_message') }
-      });
+      // Перезагружаем страницу и идём на главную
+      window.location.href = "/";
+      
     } catch (error: any) {
       console.error('Registration error:', error);
       
-      // Обработка ошибок с сервера
-      if (error.response?.data?.error === 'User already exists') {
+      if (error.response?.data?.message === "Email already exists") {
         setErrors({ email: t('register.email_exists') });
-      } else if (error.response?.data?.error) {
-        setErrors({ submit: error.response.data.error });
+      } else if (error.response?.data?.message) {
+        setErrors({ submit: error.response.data.message });
       } else {
         setErrors({ submit: t('register.submit_error') });
       }
@@ -99,10 +110,18 @@ export default function Register() {
     }
   };
 
+  const getFieldClass = (fieldName: string) => {
+    const hasError = errors[fieldName] && touched[fieldName];
+    return `w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C17B5E] focus:border-transparent transition ${
+      hasError 
+        ? 'border-red-500 bg-red-50' 
+        : 'border-gray-300'
+    }`;
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#CDBCA8] to-[#B8A88E] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white rounded-3xl shadow-2xl p-8 md:p-10">
-        {/* Header */}
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             {t('register.title')}
@@ -112,7 +131,6 @@ export default function Register() {
           </p>
         </div>
 
-        {/* Form */}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {/* Full Name Field */}
           <div>
@@ -126,10 +144,11 @@ export default function Register() {
               autoComplete="name"
               value={formData.full_name}
               onChange={handleChange}
-              className={`w-full px-4 py-3 border ${errors.full_name ? 'border-red-500' : 'border-gray-300'} rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C17B5E] focus:border-transparent transition`}
+              onBlur={() => handleBlur('full_name')}
+              className={getFieldClass('full_name')}
               placeholder={t('register.name_placeholder')}
             />
-            {errors.full_name && (
+            {errors.full_name && touched.full_name && (
               <p className="mt-1 text-sm text-red-500">{errors.full_name}</p>
             )}
           </div>
@@ -146,10 +165,11 @@ export default function Register() {
               autoComplete="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C17B5E] focus:border-transparent transition`}
+              onBlur={() => handleBlur('email')}
+              className={getFieldClass('email')}
               placeholder={t('register.email_placeholder')}
             />
-            {errors.email && (
+            {errors.email && touched.email && (
               <p className="mt-1 text-sm text-red-500">{errors.email}</p>
             )}
           </div>
@@ -166,10 +186,11 @@ export default function Register() {
               autoComplete="new-password"
               value={formData.password}
               onChange={handleChange}
-              className={`w-full px-4 py-3 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C17B5E] focus:border-transparent transition`}
+              onBlur={() => handleBlur('password')}
+              className={getFieldClass('password')}
               placeholder={t('register.password_placeholder')}
             />
-            {errors.password && (
+            {errors.password && touched.password && (
               <p className="mt-1 text-sm text-red-500">{errors.password}</p>
             )}
           </div>
@@ -186,10 +207,11 @@ export default function Register() {
               autoComplete="new-password"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className={`w-full px-4 py-3 border ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'} rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C17B5E] focus:border-transparent transition`}
+              onBlur={() => handleBlur('confirmPassword')}
+              className={getFieldClass('confirmPassword')}
               placeholder={t('register.confirm_password_placeholder')}
             />
-            {errors.confirmPassword && (
+            {errors.confirmPassword && touched.confirmPassword && (
               <p className="mt-1 text-sm text-red-500">{errors.confirmPassword}</p>
             )}
           </div>
@@ -241,9 +263,9 @@ export default function Register() {
           <div className="text-center">
             <p className="text-sm text-gray-600">
               {t('register.have_account')}{' '}
-              <Link to="/login" className="font-medium text-[#C17B5E] hover:text-[#A35C3A] transition">
+              <a href="/login" className="font-medium text-[#C17B5E] hover:text-[#A35C3A] transition">
                 {t('register.login_link')}
-              </Link>
+              </a>
             </p>
           </div>
         </form>
