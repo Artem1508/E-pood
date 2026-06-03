@@ -113,8 +113,9 @@ body {
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 48px;
   font-weight: 800;
+  font-family: 'Playfair Display', serif;
   text-decoration: none;
   color: black;
   letter-spacing: 1px;
@@ -199,9 +200,11 @@ body {
   border-radius: 50%;
 }
 
-h1, h2, h3, .logo-font {
+h1, h2, h3, a, .logo-font {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
+  text-decoration: none;
+  color: var(--text-dark);
 }
 
 .Row {
