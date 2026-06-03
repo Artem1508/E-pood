@@ -17,7 +17,7 @@ const Header = ({ cartCount, favoritesCount }: HeaderProps) => {
       <div className="header-inner">
         {/* LEFT */}
         <div className="header-left">
-          <a href="/" className="logo">ABM</a>
+          <a href="/" className="hero-title">ABM</a>
         </div>
 
         {/* CENTER — навигация с мега-меню */}

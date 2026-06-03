@@ -204,6 +204,11 @@ h1, h2, h3, .logo-font {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
 }
+a {
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  color: inherit;
+}
 
 .Row {
     display: table;
