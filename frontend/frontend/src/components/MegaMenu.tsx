@@ -1,4 +1,4 @@
-import { MenuSection } from "../data/menuData";
+import type { MenuSection } from "../data/menuData";
 
 type Props = {
   sections: MenuSection[];
