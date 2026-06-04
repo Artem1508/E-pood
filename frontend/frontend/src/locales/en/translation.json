@@ -118,5 +118,48 @@
   "socks": "Socks",
   "about_title": "About Us",
   "about_description": "Learn more about our mission and values.",
-  "about_text": "ABM is a modern fashion e-commerce platform providing high-quality clothing and accessories."
+  "about_text": "ABM is a modern fashion e-commerce platform providing high-quality clothing and accessories.",
+  "admin": {
+    "dashboard": "Dashboard",
+    "total_users": "Total Users",
+    "total_products": "Total Products",
+    "total_orders": "Total Orders",
+    "total_revenue": "Total Revenue",
+    "recent_orders": "Recent Orders",
+    "categories": "Categories",
+    "products": "Products",
+    "users": "Users",
+    "payments": "Payments",
+    "add_category": "Add Category",
+    "edit_category": "Edit Category",
+    "name": "Name",
+    "description": "Description",
+    "price": "Price",
+    "stock": "Stock",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "customer": {
+    "welcome_back": "Welcome back",
+    "dashboard_subtitle": "Manage your orders and profile",
+    "total_orders": "Total Orders",
+    "total_spent": "Total Spent",
+    "active_orders": "Active Orders",
+    "recent_orders": "Recent Orders",
+    "my_orders": "My Orders",
+    "no_orders": "No orders yet",
+    "continue_shopping": "Continue Shopping",
+    "track_orders": "Track Orders"
+  },
+  "employee": {
+    "inventory_management": "Inventory Management",
+    "order_management": "Order Management",
+    "total_products": "Total Products",
+    "low_stock_items": "Low Stock Items",
+    "out_of_stock": "Out of Stock",
+    "current_stock": "Current Stock",
+    "restock": "Restock",
+    "all_orders": "All Orders",
+    "order_items": "Order Items"
+  }
 }

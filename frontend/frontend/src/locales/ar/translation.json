@@ -92,5 +92,48 @@
   "socks": "جوربات",
   "about_title": "من نحن",
   "about_description": "تعرف أكثر على مهمتنا وقيمنا.",
-  "about_text": "ABM هي منصة تجارة إلكترونية معاصرة توفر ملابس وأكسسوارات عالية الجودة."
+  "about_text": "ABM هي منصة تجارة إلكترونية معاصرة توفر ملابس وأكسسوارات عالية الجودة.",
+  "admin": {
+    "dashboard": "لوحة التحكم",
+    "total_users": "إجمالي المستخدمين",
+    "total_products": "إجمالي المنتجات",
+    "total_orders": "إجمالي الطلبات",
+    "total_revenue": "إجمالي الإيرادات",
+    "recent_orders": "الطلبات الحديثة",
+    "categories": "الفئات",
+    "products": "المنتجات",
+    "users": "المستخدمون",
+    "payments": "المدفوعات",
+    "add_category": "إضافة فئة",
+    "edit_category": "تعديل فئة",
+    "name": "الاسم",
+    "description": "الوصف",
+    "price": "السعر",
+    "stock": "المخزون",
+    "status": "الحالة",
+    "actions": "الإجراءات"
+  },
+  "customer": {
+    "welcome_back": "مرحباً بعودتك",
+    "dashboard_subtitle": "إدارة طلباتك وملفك الشخصي",
+    "total_orders": "إجمالي الطلبات",
+    "total_spent": "إجمالي المُنفق",
+    "active_orders": "الطلبات النشطة",
+    "recent_orders": "الطلبات الحديثة",
+    "my_orders": "طلباتي",
+    "no_orders": "لا توجد طلبات بعد",
+    "continue_shopping": "متابعة التسوق",
+    "track_orders": "تتبع الطلبات"
+  },
+  "employee": {
+    "inventory_management": "إدارة المخزون",
+    "order_management": "إدارة الطلبات",
+    "total_products": "إجمالي المنتجات",
+    "low_stock_items": "العناصر ذات المخزون المنخفض",
+    "out_of_stock": "نفاذ المخزون",
+    "current_stock": "المخزون الحالي",
+    "restock": "إعادة المخزون",
+    "all_orders": "جميع الطلبات",
+    "order_items": "عناصر الطلب"
+  }
 }

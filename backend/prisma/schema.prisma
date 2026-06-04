@@ -12,8 +12,6 @@ model categories_table {
   category_name String @unique @db.VarChar(100)
 }
 
-
-
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model employee {
   id     Int?
@@ -23,23 +21,17 @@ model employee {
   @@ignore
 }
 
-
-
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model order_items_table {
-  order_item_id Int      @id @default(autoincrement())
+  order_item_id Int     @id @default(autoincrement())
   order_id      Int
   product_id    Int
   quantity      Int
-  price         Decimal  @db.Decimal(10, 2)
-  subtotal      Decimal @db.Decimal(10,2)
+  price         Decimal @db.Decimal(10, 2)
+  subtotal      Decimal @db.Decimal(10, 2)
 
   @@index([product_id], map: "idx_orderitems_table_product")
 }
-
-
-
-
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model orders_table {
@@ -72,8 +64,6 @@ model person {
 
   @@ignore
 }
-
-
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model products_table {

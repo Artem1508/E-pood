@@ -14,9 +14,13 @@ export default function Layout({ children, cartCount = 0, favoritesCount = 0 }: 
     <>
       <TopBar />
       <Header cartCount={cartCount} favoritesCount={favoritesCount} />
+
+     
+
       <main className="main-content">
         {children}
       </main>
+
       <Footer />
     </>
   )

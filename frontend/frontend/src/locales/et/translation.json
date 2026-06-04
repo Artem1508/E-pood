@@ -90,5 +90,48 @@
   "socks": "Sokid",
   "about_title": "Meist",
   "about_description": "Lisainfo meie missiooni ja väärtustest.",
-  "about_text": "ABM on modernne mode e-kommerce platvorm, mis pakub kõrge kvaliteediga riideid ja aksessuaare."
+  "about_text": "ABM on modernne mode e-kommerce platvorm, mis pakub kõrge kvaliteediga riideid ja aksessuaare.",
+  "admin": {
+    "dashboard": "Töölauale",
+    "total_users": "Kokku kasutajad",
+    "total_products": "Kokku tooted",
+    "total_orders": "Kokku tellimused",
+    "total_revenue": "Kokku tulu",
+    "recent_orders": "Hiljutised tellimused",
+    "categories": "Kategooriad",
+    "products": "Tooted",
+    "users": "Kasutajad",
+    "payments": "Makseid",
+    "add_category": "Lisa kategooria",
+    "edit_category": "Muuda kategooriat",
+    "name": "Nimi",
+    "description": "Kirjeldus",
+    "price": "Hind",
+    "stock": "Laos",
+    "status": "Olek",
+    "actions": "Tegevused"
+  },
+  "customer": {
+    "welcome_back": "Tere tulemast tagasi",
+    "dashboard_subtitle": "Halda oma tellimusi ja profiili",
+    "total_orders": "Kokku tellimused",
+    "total_spent": "Kokku kulutatud",
+    "active_orders": "Aktiivsed tellimused",
+    "recent_orders": "Hiljutised tellimused",
+    "my_orders": "Minu tellimused",
+    "no_orders": "Tellimusi pole veel",
+    "continue_shopping": "Jätka ostlemist",
+    "track_orders": "Jälgi tellimusi"
+  },
+  "employee": {
+    "inventory_management": "Inventari haldamine",
+    "order_management": "Tellimuste haldamine",
+    "total_products": "Kokku tooted",
+    "low_stock_items": "Madala laosoleku tooted",
+    "out_of_stock": "Lõppenud",
+    "current_stock": "Praegune laos",
+    "restock": "Täienda laos",
+    "all_orders": "Kõik tellimused",
+    "order_items": "Tellimuse üksused"
+  }
 }

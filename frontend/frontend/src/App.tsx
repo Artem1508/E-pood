@@ -20,13 +20,13 @@ function App() {
   const location = useLocation();
   const [, setUpdateTrigger] = useState(0);
 
-    useEffect(() => {
-      setUpdateTrigger(prev => prev + 1);
-    }, [location]);
+  useEffect(() => {
+    setUpdateTrigger(prev => prev + 1);
+  }, [location]);
 
   return (
     <Routes>
-      {/* Публичные маршруты с обычным Layout */}
+      {/* Public routes with Layout */}
       <Route path="/" element={
         <Layout cartCount={cartCount} favoritesCount={favoritesCount}>
           <Home />
@@ -63,18 +63,27 @@ function App() {
         </Layout>
       } />
 
-      {/* Auth маршруты без Layout */}
-      <Route path="/login" element={ <Layout cartCount={cartCount} favoritesCount={favoritesCount}> <Login /></Layout>} />
-      <Route path="/register" element={<Layout cartCount={cartCount} favoritesCount={favoritesCount}> <Register /></Layout>} />
+      {/* Auth routes */}
+      <Route path="/login" element={
+        <Layout cartCount={cartCount} favoritesCount={favoritesCount}>
+          <Login />
+        </Layout>
+      } />
+      
+      <Route path="/register" element={
+        <Layout cartCount={cartCount} favoritesCount={favoritesCount}>
+          <Register />
+        </Layout>
+      } />
 
-      {/* Admin маршруты */}
+      {/* Admin routes */}
       <Route element={<ProtectedRoute requiredRole={1} />}>
-        <Route element={<AdminLayout />}>a
+        <Route element={<AdminLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Route>
 
-      {/* Employee маршруты */}
+      {/* Employee routes */}
       <Route element={<ProtectedRoute requiredRole={2} />}>
         <Route element={<EmployeeLayout />}>
           <Route path="/employee/*" element={<div>Employee Panel</div>} />
