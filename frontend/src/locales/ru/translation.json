@@ -116,5 +116,48 @@
   "socks": "Носки",
   "about_title": "О нас",
   "about_description": "Узнайте больше о нашей миссии и ценностях.",
-  "about_text": "ABM - это современная платформа электронной коммерции, которая предоставляет одежду и аксессуары высокого качества."
+  "about_text": "ABM - это современная платформа электронной коммерции, которая предоставляет одежду и аксессуары высокого качества.",
+  "admin": {
+    "dashboard": "Панель управления",
+    "total_users": "Всего пользователей",
+    "total_products": "Всего продуктов",
+    "total_orders": "Всего заказов",
+    "total_revenue": "Всего дохода",
+    "recent_orders": "Последние заказы",
+    "categories": "Категории",
+    "products": "Продукты",
+    "users": "Пользователи",
+    "payments": "Платежи",
+    "add_category": "Добавить категорию",
+    "edit_category": "Редактировать категорию",
+    "name": "Название",
+    "description": "Описание",
+    "price": "Цена",
+    "stock": "Склад",
+    "status": "Статус",
+    "actions": "Действия"
+  },
+  "customer": {
+    "welcome_back": "С возвращением",
+    "dashboard_subtitle": "Управление вашими заказами и профилем",
+    "total_orders": "Всего заказов",
+    "total_spent": "Всего потрачено",
+    "active_orders": "Активные заказы",
+    "recent_orders": "Последние заказы",
+    "my_orders": "Мои заказы",
+    "no_orders": "Заказов пока нет",
+    "continue_shopping": "Продолжить покупки",
+    "track_orders": "Отследить заказы"
+  },
+  "employee": {
+    "inventory_management": "Управление.inventory",
+    "order_management": "Управление заказами",
+    "total_products": "Всего продуктов",
+    "low_stock_items": "Товары с низким запасом",
+    "out_of_stock": "Нет в наличии",
+    "current_stock": "Текущий запас",
+    "restock": "Пополнить запас",
+    "all_orders": "Все заказы",
+    "order_items": "Позиции заказа"
+  }
 }

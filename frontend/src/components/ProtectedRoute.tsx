@@ -1,8 +1,9 @@
+// src/components/ProtectedRoute.tsx
 import { Navigate, Outlet } from "react-router-dom";
 import { isAuthenticated, getCurrentUser } from "../services/auth.service";
 
 interface Props {
-  requiredRole?: number;  // ← Добавьте эту строку
+  requiredRole?: number;
   children?: React.ReactNode;
 }
 

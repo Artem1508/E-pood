@@ -34,6 +34,7 @@ function App() {
         </Route>
       </Route>
 
+      {/* Employee routes */}
       <Route element={<ProtectedRoute requiredRole={2} />}>
         <Route element={<EmployeeLayout />}>
           <Route path="/employee/*" element={<div>Employee Panel</div>} />

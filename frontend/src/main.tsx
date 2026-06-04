@@ -6,12 +6,15 @@ import { AppProviders } from './contexts';
 import "./index.css";
 import "./i18n"; // Load translations BEFORE App renders
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}>
       <AppProviders> 
         <App /> 
       </AppProviders>
     </BrowserRouter>
-  </React.StrictMode>
-);
+  </React.StrictMode>,
+)
