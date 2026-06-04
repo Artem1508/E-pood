@@ -1,0 +1,694 @@
+/* ----- НЮДОВАЯ ПАЛИТРА ----- */
+:root {
+  --nude-100: #6B7A89;   /* основной фон */
+  --nude-200: #6B7A89;   /* карточки, ховеры */
+  --nude-300: #6B7A89;   /* границы, разделители */
+  --nude-400: #6B7A89;   /* акцент светлый */
+  --clay: #C17B5E;       /* основной акцент (терракотовый) */
+  --clay-dark: #A35C3A;  /* тёмный акцент */
+  --text-dark: #2C2A29;  /* основной текст */
+  --text-soft: #5F5B59;  /* второстепенный текст */
+  --white: #FFFFFF;
+  --black: #1A1817;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--nude-100);
+  color: var(--text-dark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/* =========================
+   TOP BAR (fixed + hide/show)
+========================= */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  background: #000;
+  color: white;
+
+  z-index: 1000;
+
+  transition: transform 0.3s ease;
+}
+
+.topbar.show {
+  transform: translateY(0);
+}
+
+.topbar.hide {
+  transform: translateY(-100%);
+}
+
+.topbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 16px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.language-select {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.language-select option {
+  color: black;
+}
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-links a {
+  color: white;
+  text-decoration: none;
+}
+
+/* =========================
+   HEADER (под topbar)
+========================= */
+
+.header {
+  background: #111111;
+  border-bottom: 1px solid #6B7A89;
+  position: relative;
+  margin-top: 40px;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+/* LEFT */
+.header-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logo {
+  font-size: 48px;
+  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 1px;
+}
+
+/* CENTER */
+.header-center {
+  display: flex;
+  justify-content: center;
+}
+
+.header-center ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-center a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header-center a:hover {
+  color: #CDBCA8;
+}
+
+/* RIGHT */
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+/* SEARCH */
+.search {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  width: 120px;
+}
+
+/* CART */
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+}
+
+.favorites {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+}
+
+.count {
+  font-size: 12px;
+  background: white;
+  color: black;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+h1, h2, h3, a, .logo-font {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text-dark);
+}
+a{
+  font-size: 20px;
+}
+
+.Row {
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+.Column {
+    display: table-cell;
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ----- TOPBAR (чёрная полоса, но смягчена) ----- */
+.bg-black {
+  background-color: #1E1C1A !important; /* мягкий чёрный вместо чистого */
+}
+
+/* ----- HEADER & NAV ----- */
+header .border-b {
+  border-bottom-color: var(--nude-300);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--clay);
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+/* акцент на кнопках/ссылках */
+.hover\:text-red-600:hover {
+  color: var(--clay) !important;
+}
+
+.bg-red-600 {
+  background-color: var(--clay) !important;
+}
+
+.hover\:bg-red-600:hover {
+  background-color: var(--clay-dark) !important;
+}
+
+.text-red-600 {
+  color: var(--clay) !important;
+}
+
+/* =========================
+   MEGA MENU WRAPPER
+========================= */
+
+
+.nav-item {
+  position: static;
+}
+.nav-item-wrapper {
+  position: static;
+}
+.header-center .nav-link {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+}
+
+
+.mega-menu {
+  position: absolute;
+  top: calc(100% - 36px);
+  left: 0;
+
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #111111;
+  z-index: 9999;
+
+  padding: 40px 0;
+}
+
+.nav-item:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+/* =========================
+   CONTAINER (GRID LAYOUT)
+========================= */
+
+.mega-menu-container {
+  max-width: 1400px; /* 🔥 шире чем было */
+  margin: 0 auto;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  display: grid;
+  justify-content: center;
+  /* чуть шире колонки */
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+
+  gap: 3rem;
+}
+
+/* =========================
+   COLUMN BLOCK
+========================= */
+
+.mega-menu-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.mega-menu-column h4 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: white;
+  letter-spacing: 0.3px;
+}
+
+/* =========================
+   LINKS LIST
+========================= */
+
+.mega-menu-column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color:white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.mega-menu-column a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #606060;
+  transition: color 0.2s ease;
+}
+
+.mega-menu-column a:hover {
+  color: white;
+}
+
+/* =========================
+   OPTIONAL: HOVER EFFECT
+   (Nike-like feel)
+========================= */
+
+.mega-menu-column:hover h4 {
+  color: white;
+}
+
+/* ----- HERO СЕКЦИЯ (как на скрине) ----- */
+.hero-section {
+  background: #6B7A89;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--nude-300);
+  margin-bottom: 2rem;
+}
+
+.hero-badge {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #CDBCA8;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: white;
+  margin-bottom: 2rem;
+  white-space: pre-line;
+}
+
+.hero-btn {
+  background: transparent;
+  border: 2px solid #CDBCA8;
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  color: #CDBCA8;
+  border-radius: 40px;
+}
+.hero-btn:hover {
+  background: transparent;
+  color: white;
+  border-color: white;
+}
+
+.containerCatal{
+  background: #CDBCA8;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;  /* Добавить правый паддинг */
+  width: 100%;          /* Явно указать ширину */
+  overflow-x: hidden;   /* Скрыть горизонтальную прокрутку */
+  box-sizing: border-box; /* Чтобы паддинги не увеличивали ширину */
+}
+
+.contCatalText{
+  font-family: 'Playfair Display', serif;
+  color:#675C5A;
+  margin-bottom: 20px;  /* Добавить отступ снизу */
+  padding-left: 50px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 300px));
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ----- КАРТОЧКИ ТОВАРОВ (нюдовые) ----- */
+.bg-white {
+  background-color: var(--white);
+}
+.shadow-md {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.hover\:shadow-xl:hover {
+  box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
+}
+.bg-gray-100 {
+  background-color: var(--nude-200);
+}
+.bg-black {
+  background-color: var(--black);
+}
+.bg-black:hover {
+  background-color: var(--clay);
+}
+
+/* ----- FOOTER ----- */ 
+footer {
+  background-color: #66574f; /* (MAREK) */
+  border-top: #6B7A89;
+  margin-top: 3rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #6B7A89;
+}
+
+/* ----- АДАПТИВ (мобильное меню пока упрощённо) ----- */
+@media (max-width: 768px) {
+  .main-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+  .hero-btn {
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+/* GRID утилиты (Tailwind-like, но простые) */
+.grid {
+  display: grid;
+}
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 768px) {
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.gap-6 { gap: 1.5rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+.text-2xl { font-size: 1.5rem; }
+.font-bold { font-weight: 700; }
+.mb-6 { margin-bottom: 1.5rem; }
+
+
+.product-card-img-container {
+  width: 260px !important;
+  height: 220px !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+  display: block !important;  /* Добавить */
+  margin: 0 auto !important;  /* Добавить для центрирования */
+}
+
+.product-card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;   /* Добавить */
+}
+
+
+/* Чтобы страницы логина/регистрации не имели Header/Footer */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Убираем отступы у body при отображении auth страниц */
+body.auth-page-body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* User Menu Styles */
+.user-menu {
+  position: relative;
+}
+
+.user-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 30px;
+  transition: background-color 0.2s;
+}
+
+.user-menu-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #C17B5E;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.user-arrow {
+  font-size: 10px;
+  color: #666;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  width: 260px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.user-info {
+  padding: 16px;
+  background: #f9f9f9;
+}
+
+.user-fullname {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.user-email {
+  font-size: 12px;
+  color: #666;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 4px 0;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item.logout {
+  color: #dc2626;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.dropdown-item.logout:hover {
+  background-color: #fee2e2;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.auth-btn {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.login-btn {
+  color: #C17B5E;
+  border: 1px solid #C17B5E;
+  background: transparent;
+}
+
+.login-btn:hover {
+  background-color: #C17B5E;
+  color: white;
+}
+
+.register-btn {
+  background-color: #C17B5E;
+  color: white;
+}
+
+.register-btn:hover {
+  background-color: #A35C3A;
+}
