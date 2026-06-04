@@ -1,13 +1,39 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { Product } from "../types/product.types";
+import { useCart } from '../contexts/CartContext';
+import { useFavorites } from '../contexts/FavoritesContext';
+import { useAuth } from '../contexts/AuthContext';
 
-interface Props {
-  product: Product;
-}
 
-export default function ProductCard({ product }: Props) {
+
+export default function ProductCard({ product }) {
   const { t } = useTranslation();
+  const { addToCart } = useCart();
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const { isAuthenticated } = useAuth();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault(); // Предотвращаем переход по ссылке
+    if (!isAuthenticated) {
+      alert(t('please_login_first'));
+      return;
+    }
+    addToCart(product, 1);
+    // Можно добавить уведомление об успехе
+    alert(t('added_to_cart'));
+  };
+
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault(); // Предотвращаем переход по ссылке
+    if (!isAuthenticated) {
+      alert(t('please_login_first'));
+      return;
+    }
+    toggleFavorite(product);
+  };
+
+  const isProductFavorite = isFavorite(product.product_id);
 
   return (
     <Link to={`/product/${product.product_id}`} className="w-[220px] min-w-[220px] bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-1 cursor-pointer border border-gray-200"
@@ -34,18 +60,85 @@ export default function ProductCard({ product }: Props) {
       </div>
 
       {/* CONTENT */}
-      <div className="p-5 border-t border-gray-100">
-        <h3 className="font-semibold text-lg mb-1 text-black break-words"
-        style={{ paddingLeft: '10px', paddingRight: '20px' }}>
-          {product.name}
-        </h3>
+        <div style={{ padding: '16px', borderTop: '1px solid #e5e7eb' }}>
+        {/* Название и избранное */}
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'flex-start',
+          gap: '8px',
+          marginBottom: '12px'
+        }}>
+          <h3 style={{ 
+            fontSize: '18px', 
+            fontWeight: '600', 
+            color: 'black',
+            margin: 0,
+            flex: 1,
+            lineHeight: '1.3'
+          }}>
+            {product.name}
+          </h3>
+          <button
+            onClick={handleToggleFavorite}
+            style={{
+              flexShrink: 0,
+              width: '32px',
+              height: '32px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'white',
+              borderRadius: '50%',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            {isProductFavorite ? (
+              <span style={{ fontSize: '20px', color: '#ef4444' }}>❤️</span>
+            ) : (
+              <span style={{ fontSize: '20px', color: '#9ca3af' }}>🤍</span>
+            )}
+          </button>
+        </div>
 
-        <p className="font-semibold text-lg mb-1 text-black line-clamp-2 break-words"
-        style={{ paddingLeft: '10px', paddingRight: '20px' }} >
-          {product.price} €
-        </p>
+        {/* Цена и корзина */}
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center',
+          gap: '8px'
+        }}>
+          <p style={{ 
+            fontWeight: 'bold', 
+            fontSize: '20px', 
+            color: '#111827',
+            margin: 0
+          }}>
+            {product.price} €
+          </p>
+          <button
+            onClick={handleAddToCart}
+            style={{
+              flexShrink: 0,
+              backgroundColor: '#111827',
+              color: 'white',
+              padding: '8px 16px',
+              borderRadius: '9999px',
+              fontSize: '14px',
+              fontWeight: '500',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            <span>🛒</span>
+            <span style={{ display: 'inline' }}>{t('buy')}</span>
+          </button>
+        </div>
       </div>
-
     </Link>
   );
 }

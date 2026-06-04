@@ -4,16 +4,12 @@ import { megaMenuData } from "../data/menuData";
 import MegaMenu from "./MegaMenu";
 import { useTranslation } from "react-i18next";
 import { getCurrentUser, isAuthenticated, logout } from "../services/auth.service";
-
-interface HeaderProps {
-  cartCount: number;
-  favoritesCount: number;
-}
-
+import { useCart } from '../contexts/CartContext';
+import { useFavorites } from '../contexts/FavoritesContext';
 // translation keys
 const navItems = ["men", "women", "kids", "brands", "new"];
 
-export default function Header({ cartCount, favoritesCount }: HeaderProps) {
+export default function Header() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   
@@ -24,6 +20,8 @@ export default function Header({ cartCount, favoritesCount }: HeaderProps) {
   const timeoutRef = useRef<number | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
   const userMenuRef = useRef<HTMLDivElement | null>(null);
+  const { totalQuantity } = useCart();
+  const { favorites } = useFavorites();
 
   // Проверяем авторизацию при загрузке
   useEffect(() => {
@@ -192,12 +190,12 @@ export default function Header({ cartCount, favoritesCount }: HeaderProps) {
 
           <Link to="/cart" className="cart">
             <span>🛍</span>
-            <span className="count">{cartCount}</span>
+            <span className="count">{totalQuantity}</span>
           </Link>
 
           <Link to="/favorites" className="favorites">
             <span>❤</span>
-            <span className="count">{favoritesCount}</span>
+            <span className="count">{favorites.length}</span>
           </Link>
         </div>
 
