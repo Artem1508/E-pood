@@ -4,6 +4,7 @@ import type { Product } from "../types/product.types";
 import { useCart } from '../contexts/CartContext';
 import { useFavorites } from '../contexts/FavoritesContext';
 import { useAuth } from '../contexts/AuthContext';
+import { getCategoryImage } from '../utils/categoryImages';
 
 
 
@@ -12,20 +13,20 @@ export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const { isAuthenticated } = useAuth();
+  const imageUrl = getCategoryImage(product.category_id);
 
   const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault(); // Предотвращаем переход по ссылке
+    e.preventDefault();
     if (!isAuthenticated) {
       alert(t('please_login_first'));
       return;
     }
     addToCart(product, 1);
-    // Можно добавить уведомление об успехе
     alert(t('added_to_cart'));
   };
 
   const handleToggleFavorite = (e: React.MouseEvent) => {
-    e.preventDefault(); // Предотвращаем переход по ссылке
+    e.preventDefault();
     if (!isAuthenticated) {
       alert(t('please_login_first'));
       return;
@@ -34,7 +35,8 @@ export default function ProductCard({ product }) {
   };
 
   const isProductFavorite = isFavorite(product.product_id);
-
+  console.log('Product category:', product.category);
+  console.log('Image URL:', imageUrl);
   return (
     <Link to={`/product/${product.product_id}`} className="w-[220px] min-w-[220px] bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-1 cursor-pointer border border-gray-200"
         style={{
@@ -46,22 +48,19 @@ export default function ProductCard({ product }) {
         }}
     >
       
-      {/* IMAGE - жёстко фиксируем размеры */}
       <div  
         className="product-card-img-container"
         style={{ width: '260px', margin: '0 auto', height: '260px' }}
       >
 
         <img
-          src={product.image_URL}
+          src={imageUrl}
           alt={product.name}
           className="product-card-img"
         />
       </div>
 
-      {/* CONTENT */}
         <div style={{ padding: '16px', borderTop: '1px solid #e5e7eb' }}>
-        {/* Название и избранное */}
         <div style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
@@ -102,7 +101,6 @@ export default function ProductCard({ product }) {
           </button>
         </div>
 
-        {/* Цена и корзина */}
         <div style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
