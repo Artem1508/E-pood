@@ -4,7 +4,7 @@ import type { Product } from "../types/product.types";
 import { useCart } from '../contexts/CartContext';
 import { useFavorites } from '../contexts/FavoritesContext';
 import { useAuth } from '../contexts/AuthContext';
-import { getCategoryImage } from '../utils/categoryImages';
+import { getProductImage } from '../utils/categoryImages';
 
 
 
@@ -13,7 +13,7 @@ export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const { isAuthenticated } = useAuth();
-  const imageUrl = getCategoryImage(product.category_id);
+  const imageUrl = getProductImage(product);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
