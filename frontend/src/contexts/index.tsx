@@ -1,24 +1,24 @@
-// contexts/index.tsx
-import React, { type ReactNode } from 'react';
+import React,  { type ReactNode } from 'react';
 import { AuthProvider } from './AuthContext';
 import { CartProvider } from './CartContext';
 import { FavoritesProvider } from './FavoritesContext';
-import { UserProvider } from './UserContext';
+import { ToastProvider } from './ToastContext';
 
 export { useAuth } from './AuthContext';
 export { useCart } from './CartContext';
 export { useFavorites } from './FavoritesContext';
+export { useToast } from './ToastContext';
 
 export const AppProviders = ({ children }: { children: ReactNode }) => {
   return (
     <AuthProvider>
-      <UserProvider>
-        <CartProvider>
-          <FavoritesProvider>
+      <CartProvider>
+        <FavoritesProvider>
+          <ToastProvider>
             {children}
-          </FavoritesProvider>
-        </CartProvider>
-      </UserProvider>
+          </ToastProvider>
+        </FavoritesProvider>
+      </CartProvider>
     </AuthProvider>
   );
 };

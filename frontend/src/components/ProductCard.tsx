@@ -5,6 +5,7 @@ import { useCart } from '../contexts/CartContext';
 import { useFavorites } from '../contexts/FavoritesContext';
 import { useAuth } from '../contexts/AuthContext';
 import { getProductImage } from '../utils/categoryImages';
+import { useToast } from '../contexts/ToastContext';
 
 
 
@@ -13,30 +14,34 @@ export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const { isAuthenticated } = useAuth();
+  const { showToast } = useToast();
   const imageUrl = getProductImage(product);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!isAuthenticated) {
-      alert(t('please_login_first'));
+      showToast(t('please_login_first'), 'error');
       return;
     }
     addToCart(product, 1);
-    alert(t('added_to_cart'));
+    showToast(`${product.name} ${t('added_to_cart')}`, 'success');
   };
 
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!isAuthenticated) {
-      alert(t('please_login_first'));
+      showToast(t('please_login_first'), 'error');
       return;
     }
     toggleFavorite(product);
+    const isNowFavorite = !isFavorite(product.product_id);
+    showToast(
+      isNowFavorite ? `${product.name} ${t('added_to_favorites')}` : `${product.name} ${t('removed_from_favorites')}`,
+      'success'
+    );
   };
 
   const isProductFavorite = isFavorite(product.product_id);
-  console.log('Product category:', product.category);
-  console.log('Image URL:', imageUrl);
   return (
     <Link to={`/product/${product.product_id}`} className="w-[220px] min-w-[220px] bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-1 cursor-pointer border border-gray-200"
         style={{

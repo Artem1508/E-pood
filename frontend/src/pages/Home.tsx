@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
 import Products from "../components/Products";
 import { useTranslation } from "react-i18next";
+import About from "./About";
+import { useRef } from 'react';
 
 export default function Home() {
   const { t } = useTranslation();
+  const aboutRef = useRef<HTMLDivElement>(null)
 
   return (
     <div>
@@ -14,9 +18,9 @@ export default function Home() {
           READY <br /> SET <br /> MOVE
         </h1>
 
-        <button className="hero-btn">
+        <Link to="/products" className="hero-btn">
           {t("discover")} →
-        </button>
+        </Link>
       </section>
 
       {/* PRODUCT CATALOG */}
@@ -26,6 +30,9 @@ export default function Home() {
         </h2>
 
         <Products />
+      </div>
+      <div ref={aboutRef}>
+        <About />
       </div>
     </div>
   );

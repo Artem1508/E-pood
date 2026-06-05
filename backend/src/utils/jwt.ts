@@ -1,17 +1,9 @@
-// If @types/jsonwebtoken is not installed, TypeScript may complain it cannot find the module.
-// Silence that error locally for this file. Prefer installing @types/jsonwebtoken in the project.
-// @ts-ignore
 import jwt from "jsonwebtoken";
 
-export const generateToken = (userId: number, roleId: number) => {
+export const generateToken = (userId: number, role_id: number) => {
   return jwt.sign(
-    {
-      userId,
-      roleId,
-    },
-    process.env.JWT_SECRET!,
-    {
-      expiresIn: "7d",
-    }
+    { userId, role_id },
+    process.env.JWT_SECRET || "secret",
+    { expiresIn: "7d" }
   );
 };

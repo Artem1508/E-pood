@@ -1,10 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { isAuthenticated, getCurrentUser, logout } from "../services/auth.service";
 
 const TopBar = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState<any>(null);
@@ -13,17 +15,40 @@ const TopBar = () => {
     setIsAuth(isAuthenticated());
     setUser(getCurrentUser());
   }, []);
-  const handleLanguageChange = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value);
   };
+
   const handleLogout = () => {
     logout();
     setIsAuth(false);
     setUser(null);
     window.location.reload();
   };
+
+  const handleAboutClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Если мы не на главной странице - сначала переходим на главную
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Даем время на загрузку страницы, затем скроллим
+      setTimeout(() => {
+        const aboutSection = document.getElementById('about-section');
+        if (aboutSection) {
+          aboutSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // Если уже на главной - просто скроллим
+      const aboutSection = document.getElementById('about-section');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <div className="topbar">
       <div className="topbar-container">
@@ -48,7 +73,9 @@ const TopBar = () => {
               <span>|</span>
               <Link to="/register">{t("signup")}</Link>
               <span>|</span>
-              <Link to="/about">{t("about")}</Link>
+              <a href="#" onClick={handleAboutClick} className="about-link">
+                {t("about")}
+              </a>
             </>
           ) : (
             <>
@@ -60,7 +87,9 @@ const TopBar = () => {
                 {t("Log Out")}
               </Link>
               <span>|</span>
-              <Link to="/about">{t("about")}</Link>
+              <a href="#" onClick={handleAboutClick} className="about-link">
+                {t("about")}
+              </a>
             </>
           )}
         </div>
