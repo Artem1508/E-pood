@@ -692,3 +692,11 @@ body.auth-page-body {
 .register-btn:hover {
   background-color: #A35C3A;
 }
+
+.auth-links-user {
+  color: white;
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 20px;
+}
