@@ -27,19 +27,16 @@ const Login = () => {
     try {
       const data = await login(email, password);
       
-      // Сохраняем токен и данные пользователя
       localStorage.setItem("token", data.token);
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
       }
       window.location.href = "/";
       
-      // Перенаправляем на главную страницу
       navigate("/");
     } catch (err: any) {
       console.error("Login failed:", err);
       
-      // Обработка ошибок
       if (err.response?.status === 401) {
         setError(t("login.invalid_credentials"));
       } else if (err.response?.data?.error) {

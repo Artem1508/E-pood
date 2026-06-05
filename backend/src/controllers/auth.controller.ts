@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 import { registerUser, loginUser } from "../services/auth.service";
 import { generateToken } from "../utils/jwt";
 
-// Вспомогательная функция для получения ID
 const getIntId = (id: string | string[] | undefined): number | null => {
   if (!id) return null;
   const parsed = parseInt(Array.isArray(id) ? id[0] : id);

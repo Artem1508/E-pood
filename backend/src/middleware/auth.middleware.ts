@@ -23,7 +23,6 @@ export const authenticate = (
 
     req.user = decoded;
     
-    // Добавьте отладку
     console.log("Decoded user:", decoded);
 
     next();

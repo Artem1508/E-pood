@@ -23,7 +23,6 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   return (
     <Routes>
-      {/* Публичные маршруты с Layout (пропсы больше не нужны) */}
       <Route path="/" element={<Layout><Home /></Layout>} />
       <Route path="/products" element={<Layout><Products /></Layout>} />
       <Route path="/product/:id" element={<Layout><ProductDetails /></Layout>} />

@@ -25,7 +25,6 @@ export const register = async (
   return response.data;
 };
 
-// Добавьте эти функции:
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");

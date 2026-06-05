@@ -1,4 +1,3 @@
-// src/components/ProtectedRoute.tsx
 import { Navigate, Outlet } from "react-router-dom";
 import { isAuthenticated, getCurrentUser } from "../services/auth.service";
 
