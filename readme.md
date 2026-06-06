@@ -1,13 +1,14 @@
 # E-Pood
-Team Members:
+E-pood on täisfunktsionaalne e-kaubanduse veebirakendus toodete haldamiseks, ostukorviga tellimuste vormistamiseks ja maksete simuleerimiseks.
 
-Artjom Pshenichnikov
+Projekt jaguneb kaheks põhiosaks:
 
-Marek Veskimeister
+    backend - Express, Prisma, PostgreSQL, JWT autentimine, rollipõhine autoriseerimine ja Swagger API dokumentatsioon
 
-Baddar Abobakr 
+    frontend - React, Vite, TypeScript, TailwindCSS ja kohandatud CSS
 
- // Frontend (React + TypeScript)
+Backend haldab andmeid, autentimist, rollikontrolle, CRUD operatsioone ja aruandepäringuid. Frontend renderdab kasutajaliidest, keelevahetust, ostukorvi, tellimuste vormistamist ja admin paneeli.
+# Frontend (React + TypeScript)
 
 frontend/  
 │  
@@ -122,7 +123,7 @@ frontend/
 └── vite.config.ts  
   
   
-// Backend (Express + TypeScript)  
+# Backend (Express + TypeScript)  
   
 backend/  
 │  
@@ -173,3 +174,163 @@ backend/
 └── tsconfig.json  
 
 
+
+
+Põhimõte on lihtne: marsruudid ühendavad endpoint-id, kontrollerid töötlevad HTTP päringuid, teenused sisaldavad ärilogikat ja frontendi komponendid on taaskasutatavad ning väikesed.
+
+# Funktsionaalsus
+
+    registreerimine ja sisselogimine
+
+    JWT autentimine
+
+    toodete sirvimine
+
+    toodete lisamine ostukorvi
+
+    ostukorvi haldamine (koguse muutmine, eemaldamine)
+
+    toodete lisamine lemmikutesse
+
+    lemmikute lehekülg
+
+    tellimuse vormistamine (aadress, kontaktandmed)
+
+    tellimuse ajalugu
+
+    maksete simuleerimine
+
+    kolmkeelne liides (eesti, inglise, vene)
+
+    teavitused (toast notifications)
+
+    Swagger API dokumentatsioon
+
+ Pooleli olev funktsionaalsus
+
+    otsing – hetkel puudub töötav otsing
+
+    admin paneel – pooleli, põhifunktsionaalsus puudulik
+
+    töötaja vaade – pooleli
+
+ # Rollid
+
+Klient (role_id = 3)
+
+    saab registreeruda ja sisse logida
+
+    saab sirvida tooteid
+
+    saab lisada tooteid ostukorvi ja lemmikutesse
+
+    saab vormistada tellimusi
+
+    näeb oma tellimuste ajalugu
+
+Töötaja (role_id = 2)
+
+    pooleli
+
+Administraator (role_id = 1)
+
+    pooleli
+
+
+# Backendi seadistus
+
+    cd backend
+    npm install
+
+  Loo .env fail:
+
+    PORT=5000
+    DATABASE_URL="postgresql://kasutaja:parool@localhost:5432/e_pood"
+    JWT_SECRET="sinu-salajane-voti"
+
+  Genereeri Prisma klient:
+
+    npx prisma generate
+    npx prisma db push
+    npm run dev
+    
+  Swagger dokumentatsioon:
+     
+    http://localhost:5000/api-docs
+
+# Frontendi seadistus
+
+    cd frontend
+    npm install
+    npm run dev
+
+  Frontend töötab aadressil:
+
+    http://localhost:5173
+
+
+ # API Endpoints
+
+ Auth
+
+    POST /api/auth/register – registreerimine
+    
+    POST /api/auth/login – sisselogimine
+    
+    GET /api/auth/users – kõik kasutajad (Admin)
+    
+    GET /api/auth/users/:id – kasutaja andmed (Admin või ise)
+    
+    PUT /api/auth/users/:id – kasutaja muutmine (Admin või ise)
+    
+    DELETE /api/auth/users/:id – kasutaja kustutamine (Admin)
+
+Tooted
+
+    GET /api/products – kõik tooted
+
+    GET /api/products/:id – ühe toote andmed
+
+    POST /api/products – toote lisamine (Admin/Employee)
+
+    PUT /api/products/:id – toote muutmine (Admin/Employee)
+
+    DELETE /api/products/:id – toote kustutamine (Admin)
+
+Kategooriad
+
+    GET /api/categories – kõik kategooriad
+
+    POST /api/categories – kategooria lisamine (Admin)
+
+Tellimused
+
+    POST /api/orders – tellimuse loomine (Customer)
+
+    GET /api/orders/my-orders – kasutaja enda tellimused (Customer)
+
+Maksed
+
+    POST /api/payments – makse loomine (Customer)
+
+    GET /api/payments/my-payments – kasutaja enda maksed (Customer)
+
+Kasutajad
+
+    GET /api/users – kõik kasutajad (Admin)
+
+    GET /api/users/:id – kasutaja andmed (Admin või ise)
+
+    PUT /api/users/:id – kasutaja muutmine (Admin või ise)
+
+    DELETE /api/users/:id – kasutaja kustutamine (Admin)
+
+Süsteem
+
+    GET /health – serveri tervisekontroll
+
+    GET /api-docs – Swagger dokumentatsioon
+
+# Kokkuvõte
+
+Projekti raames on realiseeritud täisfunktsionaalne backend kõigi vajalike endpointidega, andmebaasi skeem indeksite, vaadete, trigeri ja protseduuriga. Frontendis on realiseeritud põhiline kasutajaliides – toodete sirvimine, ostukorv, lemmikud, tellimuste vormistamine ja tellimuste ajalugu. Töötaja ja administraatori vaated on pooleli, otsing puudub. 
